@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.text-shadow {
+  text-shadow: 1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0px 1px 0 #000000,
+    0 -1px 0 #000000;
+}
+
+@theme {
+  --color-main-color: #dc353e;
+  --animate-fadeIn: fadeIn .3s ease-in;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.blur {
+  filter: blur(5px);
+  transition: filter 0.3s ease-out;
+}

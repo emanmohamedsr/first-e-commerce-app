@@ -1,0 +1,69 @@
+import { useEffect, useState } from "react";
+import Product from "./Product";
+export default function ShowProducts() {
+	const APIurl = "https://fakestoreapi.com";
+
+	const [products, setProducts] = useState([]);
+	const [cats, setCats] = useState([]);
+	const [activeFilter, setActiveFilter] = useState("all");
+
+	const fetchCategories = () => {
+		fetch(`${APIurl}/products/categories`)
+			.then((response) => response.json())
+			.then((data) => setCats(data));
+	};
+
+	const fetchProductsByCat = (cat = "") => {
+		fetch(`${APIurl}/products${cat}`)
+			.then((response) => response.json())
+			.then((data) => setProducts(data));
+	};
+
+	useEffect(() => {
+		fetchProductsByCat();
+		fetchCategories();
+	}, []);
+
+	const mapProducts = () => {
+		return products.map((product) => (
+			<Product product={product} key={product.id} />
+		));
+	};
+
+	const mapBtns = () => {
+		return cats.map((cat) => (
+			<button
+				key={cat}
+				onClick={() => {
+					fetchProductsByCat(`/category/${cat}`);
+					setActiveFilter(cat);
+				}}
+				className={`hover:opacity-80 cursor-pointer transition-all duration-300  text-md md:text-lg text-white p-2 font-bold rounded-md ${
+					activeFilter == cat ? "bg-main-color" : "bg-gray-600"
+				}`}>
+				{cat}
+			</button>
+		));
+	};
+
+	return (
+		<div className='products container mx-auto mt-20'>
+			<div className='filtrations flex gap-6 flex-wrap justify-center items-center'>
+				<button
+					onClick={() => {
+						fetchProductsByCat();
+						setActiveFilter("all");
+					}}
+					className={`hover:opacity-80 cursor-pointer transition-all duration-300  text-md md:text-lg text-white p-2 font-bold rounded-md ${
+						activeFilter == "all" ? "bg-main-color" : "bg-gray-600"
+					}`}>
+					All Products
+				</button>
+				{mapBtns()}
+			</div>
+			<div className='showProducts mx-auto my-20 flex gap-6 flex-wrap'>
+				{mapProducts()}
+			</div>
+		</div>
+	);
+}
