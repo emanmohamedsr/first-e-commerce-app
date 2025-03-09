@@ -61,7 +61,7 @@ export default function ShowProducts() {
 				</button>
 				{mapBtns()}
 			</div>
-			<div className='showProducts mx-auto my-20 flex gap-6 flex-wrap'>
+			<div className='showProducts justify-center items-center mx-auto my-20 flex gap-6 flex-wrap'>
 				{mapProducts()}
 			</div>
 		</div>
