@@ -33,10 +33,10 @@ This app is deployed using Vercel. You can visit the live demo here:
 ## 📦 Installation
 
 1. Clone the repository:
-   git clone https://github.com/
+   git clone [https://github.com/](https://github.com/emanmohamedsr/first-e-commerce-app)
 
 2. Navigate to the project directory:
-   cd repo-name
+   cd first-e-commerce-app
 
 3. Install dependencies:
    npm install
