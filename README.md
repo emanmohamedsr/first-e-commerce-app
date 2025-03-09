@@ -8,7 +8,7 @@ Welcome to my first e-commerce app! This project is built with **Vite + React** 
 
 This app is deployed using Vercel. You can visit the live demo here:
 
-# 👉 Live Demo
+# 👉 [Live Demo](https://first-e-commerce-app.vercel.app/)
 
 ---
 
